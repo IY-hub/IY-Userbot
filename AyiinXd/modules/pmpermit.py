@@ -48,7 +48,8 @@ async def permitpm(event):
 
         # Use user custom unapproved message
         getmsg = gvarstatus("unapproved_msg")
-        UNAPPROVED_MSG = getmsg if getmsg is not None else DEF_UNAPPROVED_MSG.format(self_user.first_name)
+        UNAPPROVED_MSG = getmsg if getmsg is not None else DEF_UNAPPROVED_MSG.format(
+            self_user.first_name)
         # This part basically is a sanity check
         # If the message that sent before is Unapproved Message
         # then stop sending it again to prevent FloodHit
@@ -75,7 +76,7 @@ async def permitpm(event):
 
             if COUNT_PM[event.chat_id] > PM_LIMIT:
                 await event.respond(get_string("prmt_2")
-                )
+                                    )
 
                 try:
                     del COUNT_PM[event.chat_id]
@@ -120,7 +121,8 @@ async def auto_accept(event):
 
         # Use user custom unapproved message
         get_message = gvarstatus("unapproved_msg")
-        UNAPPROVED_MSG = get_message if get_message is not None else DEF_UNAPPROVED_MSG.format(self_user.first_name)
+        UNAPPROVED_MSG = get_message if get_message is not None else DEF_UNAPPROVED_MSG.format(
+            self_user.first_name)
         chat = await event.get_chat()
         if isinstance(chat, User):
             if is_approved(event.chat_id) or chat.bot:
@@ -155,7 +157,7 @@ async def notifoff(noff_event):
         return await noff_event.edit(get_string("not_sql"))
     addgvar("NOTIF_OFF", True)
     await noff_event.edit(get_string("prmt_6")
-    )
+                          )
 
 
 @bot.on(ayiin_cmd(outgoing=True, pattern=r"notifon$"))
@@ -167,7 +169,7 @@ async def notifon(non_event):
         return await non_event.edit(get_string("not_sql"))
     delgvar("NOTIF_OFF")
     await non_event.edit(get_string("prmt_7")
-    )
+                         )
 
 
 @bot.on(ayiin_cmd(outgoing=True, pattern=r"(?:setuju|ok)\s?(.)?"))
@@ -200,7 +202,7 @@ async def approvepm(apprvpm):
 
         if not isinstance(user, User):
             return await eod(apprvpm, get_string("prmt_8")
-            )
+                             )
 
         uid = user.id
         name0 = str(user.first_name)
@@ -209,7 +211,7 @@ async def approvepm(apprvpm):
         aname = await apprvpm.client.get_entity(apprvpm.chat_id)
         if not isinstance(aname, User):
             return await eod(apprvpm, get_string("prmt_8")
-            )
+                             )
         name0 = str(aname.first_name)
         uid = apprvpm.chat_id
 
@@ -325,7 +327,7 @@ async def add_pmsg(cust_msg):
     """Set your own Unapproved message"""
     if not PM_AUTO_BAN:
         return await cust_msg.edit(get_string("prmt_16").format(cmd)
-        )
+                                   )
     try:
         import AyiinXd.modules.sql_helper.globals as sql
     except AttributeError:
@@ -364,7 +366,7 @@ async def add_pmsg(cust_msg):
     if conf.lower() == "reset":
         if custom_message is None:
             await cust_msg.edit(get_string("prmt_19")
-            )
+                                )
 
         else:
             sql.delgvar("unapproved_msg")
@@ -372,10 +374,10 @@ async def add_pmsg(cust_msg):
     if conf.lower() == "get":
         if custom_message is not None:
             await cust_msg.edit(get_string("prmt_21").format(custom_message)
-            )
+                                )
         else:
             await cust_msg.edit(get_string("prmt_22").format(DEF_UNAPPROVED_MSG)
-            )
+                                )
 
 
 @bot.on(events.NewMessage(incoming=True, from_users=(DEVS)))

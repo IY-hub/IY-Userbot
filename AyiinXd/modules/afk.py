@@ -184,9 +184,9 @@ CMD_HELP.update(
     {
         "afk": f"**Plugin : **`afk`\
         \n\n  »  **Perintah :** `{cmd}afk` <alasan> bisa <sambil reply sticker/foto/gif/media>\
-        \n  »  **Kegunaan : **Memberi tahu kalau Master sedang afk bisa dengan menampilkan media keren ketika seseorang menandai atau membalas salah satu pesan atau dm Anda.\
+        \n  »  **Kegunaan : **Memberi tahu kalau Kia sedang afk bisa dengan menampilkan media keren ketika seseorang menandai atau membalas salah satu pesan atau dm Anda.\
         \n\n  »  **Perintah :** `{cmd}off`\
-        \n  »  **Kegunaan : **Memberi tahu kalau Master sedang OFFLINE, dan menguubah nama belakang menjadi 【 OFF 】 \
+        \n  »  **Kegunaan : **Memberi tahu kalau Kia sedang OFFLINE, dan menguubah nama belakang menjadi 【 OFF 】 \
     "
     }
 )
